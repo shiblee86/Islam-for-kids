@@ -6,7 +6,7 @@
 <title>My Islamic Adventure - For Little Muslims</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(135deg,#2E8B57 0%,,#228B22 50%,,#2E8B57 100%);min-height:100vh;padding:16px}
+body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(135deg,#2E8B57 0%,#228B22 50%,#2E8B57 100%);min-height:100vh;padding:16px}
 .wrap{max-width:720px;margin:0 auto}
 
 /* Top Bar */
@@ -286,7 +286,8 @@ const SURAHS = {
       verses: 1,
       audioHint: "Bis-mil-lah-hir-rah-mā-nir-ra-ḥīm",
       story: "This is the opening chapter of the Quran. We recite it in every prayer!",
-      facts: ["It has 7 verses", "It's called 'The Opening'", "We say it 17+ times daily in prayers"]
+      facts: ["It has 7 verses", "It's called 'The Opening'", "We say it 17+ times daily in prayers"],
+      lesson: "We begin everything with Allah's name"
     },
     {
       name: "Surah Al-Ikhlas",
@@ -296,7 +297,8 @@ const SURAHS = {
       verses: 1,
       audioHint: "Qul hu-wal-la-hu a-ḥad",
       story: "This Surah tells us that Allah is One. He has no partners or children.",
-      facts: ["It's 1/3 of the Quran", "The Prophet loved this Surah", "It teaches Tawhid (Oneness of God)"]
+      facts: ["It's 1/3 of the Quran", "The Prophet loved this Surah", "It teaches Tawhid (Oneness of God)"],
+      lesson: "Allah is One and Unique"
     },
     {
       name: "Surah Al-Falaq",
@@ -306,7 +308,8 @@ const SURAHS = {
       verses: 1,
       audioHint: "Qul a-‘ū-żu bi-rab-bil-fa-laq",
       story: "This Surah teaches us to ask Allah to protect us from harm.",
-      facts: ["It's a protection Surah", "Read it before sleeping", "It has 5 verses total"]
+      facts: ["It's a protection Surah", "Read it before sleeping", "It has 5 verses total"],
+      lesson: "Allah protects us from harm"
     },
     {
       name: "Surah An-Nas",
@@ -316,7 +319,8 @@ const SURAHS = {
       verses: 1,
       audioHint: "Qul a-‘ū-żu bi-rab-bin-nās",
       story: "This is the last Surah of the Quran. It asks Allah to protect us from bad whispers.",
-      facts: ["It's the 114th Surah", "Teaches us to trust Allah only", "Read for protection"]
+      facts: ["It's the 114th Surah", "Teaches us to trust Allah only", "Read for protection"],
+      lesson: "Allah protects us from evil whispers"
     }
   ],
   2: [ // Level 2 - Continuing verses
@@ -328,7 +332,8 @@ const SURAHS = {
       verses: 2,
       audioHint: "Al-ḥam-du lil-lā-hi rab-bil-‘ā-la-mīn",
       story: "We praise Allah who created everything in the universe!",
-      facts: ["This is verse 2 of Al-Fatihah", "We say 'Ameen' after this Surah in prayer"]
+      facts: ["This is verse 2 of Al-Fatihah", "We say 'Ameen' after this Surah in prayer"],
+      lesson: "All praise belongs to Allah"
     },
     {
       name: "Surah Al-Ikhlas (Complete)",
@@ -338,7 +343,8 @@ const SURAHS = {
       verses: 2,
       audioHint: "Al-lā-huṣ-ṣa-mad",
       story: "Allah doesn't need anyone, but everyone needs Allah!",
-      facts: ["Samad means Eternal", "Allah is self-sufficient"]
+      facts: ["Samad means Eternal", "Allah is self-sufficient"],
+      lesson: "Allah is Eternal and Self-Sufficient"
     }
   ],
   3: [ // Level 3 - Longer verses
@@ -350,7 +356,8 @@ const SURAHS = {
       verses: 1,
       audioHint: "Wal-‘aṣr",
       story: "Allah swears by time to teach us an important lesson.",
-      facts: ["It's a very short but powerful Surah", "Teaches about using time wisely"]
+      facts: ["It's a very short but powerful Surah", "Teaches about using time wisely"],
+      lesson: "Use your time wisely"
     },
     {
       name: "Surah Al-Kawthar",
@@ -360,7 +367,8 @@ const SURAHS = {
       verses: 1,
       audioHint: "In-nā a‘-ṭai-nā-kal-kau-ṡar",
       story: "Allah gave Prophet Muhammad a river in Paradise called Al-Kawthar!",
-      facts: ["It's the shortest Surah", "Means 'abundance'", "A gift from Allah"]
+      facts: ["It's the shortest Surah", "Means 'abundance'", "A gift from Allah"],
+      lesson: "Allah gives us many blessings"
     }
   ],
   4: [ // Level 4 - More verses
@@ -372,7 +380,8 @@ const SURAHS = {
       verses: 1,
       audioHint: "A-ra-‘ai-tal-la-żī yu-każ-żi-bu bid-dīn",
       story: "This Surah teaches us to be kind to orphans and help those in need.",
-      facts: ["Teaches about being kind", "Warns against being mean", "Encourages charity"]
+      facts: ["Teaches about being kind", "Warns against being mean", "Encourages charity"],
+      lesson: "Be kind to orphans and help others"
     }
   ],
   5: [ // Level 5 - Review all
@@ -384,7 +393,8 @@ const SURAHS = {
       verses: 1,
       audioHint: "Li-ī-lā-fi-qu-raish",
       story: "Allah reminds us to worship Him who provides us with food and safety.",
-      facts: ["About the Quraysh tribe", "Thanks Allah for protection", "Teaches gratitude"]
+      facts: ["About the Quraysh tribe", "Thanks Allah for protection", "Teaches gratitude"],
+      lesson: "Thank Allah for food and safety"
     }
   ]
 };
@@ -570,7 +580,7 @@ const STORIES = {
 // ============================================================
 // STATE MANAGEMENT - FIXED
 // ============================================================
-const PASS_PCT = 80;
+const PASS_PCT = 70; // Lower threshold for Islamic learning (encouraging)
 const STORAGE_KEY = "islamicAdv_v1";
 const CATS = {
   quran: {label: "Learn Surahs", levels: 5, color: "#FFD93D", icon: "📖"},
@@ -617,11 +627,9 @@ function loadFile(e) {
   r.onload = ev => {
     try {
       const d = JSON.parse(ev.target.result);
-      // Check if it's a valid save file
       if(d && d.v === 1 && d.progress) {
         progress = d.progress;
-        // Reinitialize to ensure all levels exist
-        initProgress();
+        initProgress(); // Fill missing levels
         updateSaveLbl();
         renderHome();
         document.getElementById("saveLbl").textContent = "✅ Loaded!";
@@ -630,7 +638,7 @@ function loadFile(e) {
         alert("Invalid save file. Please use a valid Islamic Adventure save file.");
       }
     } catch(error) {
-      alert("Could not read save file. Make sure it's a valid save file.");
+      alert("Could not read save file.");
       console.error("Load error:", error);
     }
   };
@@ -686,13 +694,11 @@ function showHome() {
   showScreen("homeScreen"); 
 }
 
-// FIXED: Render home function
 function renderHome() {
-  // This is called when needed to refresh the home screen
   updateSaveLbl();
 }
 
-// FIXED: Open category with proper unlocked status
+// FIXED: Open category - ALL LEVELS UNLOCKED (no locks)
 function openCategory(c) {
   cat = c;
   document.getElementById("levelsTitle").textContent = CATS[c].label + " — Choose Level";
@@ -700,31 +706,19 @@ function openCategory(c) {
   grid.innerHTML = "";
   const emojis = ["🌙", "⭐", "☪️", "🕌", "🤲"];
   
-  // Make sure the category exists
   if(!progress[c]) progress[c] = {};
   
   for(let l = 1; l <= CATS[c].levels; l++) {
-    // Ensure level exists
     if(!progress[c][l]) {
-      progress[c][l] = {done: false, score: 0, unlocked: l === 1, stars: 0};
+      progress[c][l] = {done: false, score: 0, unlocked: true, stars: 0};
     }
-    
-    // Check if this level should be unlocked based on previous level
-    let unlocked = l === 1; // Level 1 always unlocked
-    if(l > 1 && progress[c][l-1] && progress[c][l-1].done) {
-      unlocked = true;
-    }
-    
-    // Update the unlocked status
-    progress[c][l].unlocked = unlocked;
     
     const p = progress[c][l];
     const btn = document.createElement("button");
-    btn.className = "lv-btn" + (p.unlocked ? "" : " locked") + (p.done ? " done" : "");
+    btn.className = "lv-btn" + (p.done ? " done" : "");
     btn.innerHTML = '<span class="lv-icon">' + emojis[l-1] + '</span>Level ' + l + 
-                    (p.done ? '<div class="lv-score">⭐ ' + (p.stars || 0) + ' stars</div>' : '') + 
-                    (!p.unlocked ? '<span class="lv-lock">🔒</span>' : "");
-    if(p.unlocked) btn.onclick = (function(ll) { return function() { startLevel(ll); }; })(l);
+                    (p.done ? '<div class="lv-score">⭐ ' + (p.stars || 0) + ' stars</div>' : '');
+    btn.onclick = (function(ll) { return function() { startLevel(ll); }; })(l);
     grid.appendChild(btn);
   }
   showScreen("levelsScreen");
@@ -741,23 +735,23 @@ function startLevel(l) {
   
   // Generate questions based on category
   if(cat === 'quran') {
-    questions = Object.values(SURAHS[l] || SURAHS[1]).map(s => ({
+    questions = (SURAHS[l] || SURAHS[1]).map(s => ({
       type: 'quran',
       ...s
     }));
   } else if(cat === 'meaning') {
-    questions = Object.values(SURAHS[l] || SURAHS[1]).map(s => ({
+    questions = (SURAHS[l] || SURAHS[1]).map(s => ({
       type: 'meaning',
       ...s,
       question: `What does "${s.name}" teach us?`
     }));
   } else if(cat === 'stories') {
-    questions = Object.values(STORIES[l] || STORIES[1]).map(s => ({
+    questions = (STORIES[l] || STORIES[1]).map(s => ({
       type: 'story',
       ...s
     }));
   } else if(cat === 'dua') {
-    questions = Object.values(DUAS[l] || DUAS[1]).map(d => ({
+    questions = (DUAS[l] || DUAS[1]).map(d => ({
       type: 'dua',
       ...d
     }));
@@ -807,6 +801,11 @@ function loadQuestion() {
   hintBtn.style.display = hintAllowed ? "inline-flex" : "none";
   hintBtn.disabled = false;
   
+  // Reset check button to default
+  const checkBtn = document.getElementById("checkBtn");
+  checkBtn.textContent = "✅ Check";
+  checkBtn.onclick = checkAnswer;
+  
   renderQuestion(q);
 }
 
@@ -832,7 +831,9 @@ function renderQuestion(q) {
       <div class="word-row" id="wordRow"></div>
     `;
     
-    // Add word-by-word after a short delay to ensure DOM is ready
+    card.innerHTML = html;
+    
+    // Add word-by-word
     setTimeout(() => {
       renderWordByWord(q);
     }, 100);
@@ -844,12 +845,8 @@ function renderQuestion(q) {
       <div class="meaning-box">💭 ${q.meaning}</div>
       <div class="q-text">${q.question || 'What did you learn from this Surah?'}</div>
     `;
-    html += renderOptionsSimple([
-      "Allah is One",
-      "We should be kind",
-      "To thank Allah",
-      "To help others"
-    ], q);
+    html += renderOptionsWithLesson(q);
+    card.innerHTML = html;
     
   } else if(cat === 'stories') {
     html += `
@@ -857,14 +854,10 @@ function renderQuestion(q) {
       <div class="surah-name">${q.title}</div>
       <div class="story-box">${q.story}</div>
       <div class="meaning-box">💡 Lesson: ${q.lesson || ''}</div>
-      <div class="q-text">What did you learn from this story?</div>
+      <div class="q-text">What is the main lesson?</div>
     `;
-    html += renderOptionsSimple([
-      q.lesson || "Be kind",
-      "Something else",
-      "I don't know",
-      "Maybe later"
-    ], q);
+    html += renderOptionsWithLesson(q);
+    card.innerHTML = html;
     
   } else if(cat === 'dua') {
     html += `
@@ -875,24 +868,12 @@ function renderQuestion(q) {
       <div class="story-box">📖 When to say: ${q.when || ''}</div>
       <div class="q-text">${q.explanation || ''}</div>
     `;
-  }
-  
-  card.innerHTML = html;
-  
-  // For categories with options, render them
-  if(cat === 'meaning' || cat === 'stories') {
-    // Options are already added in renderOptionsSimple
-  } else {
-    // Add a simple check button for non-quiz categories
-    setTimeout(() => {
-      if(!document.getElementById('opts')) {
-        const checkBtn = document.getElementById("checkBtn");
-        if(checkBtn) {
-          checkBtn.textContent = "✅ I Learned This";
-          checkBtn.onclick = function() { markLearned(q); };
-        }
-      }
-    }, 100);
+    card.innerHTML = html;
+    
+    // For duas, we just mark as learned
+    const checkBtn = document.getElementById("checkBtn");
+    checkBtn.textContent = "✅ I Learned This";
+    checkBtn.onclick = function() { markLearned(q); };
   }
 }
 
@@ -918,19 +899,17 @@ function renderWordByWord(q) {
   });
 }
 
-function speakWord(word) {
-  const utterance = new SpeechSynthesisUtterance(word);
-  utterance.lang = 'ar-SA';
-  utterance.rate = 0.8;
-  window.speechSynthesis.speak(utterance);
-}
-
-function renderOptionsSimple(options, q) {
+function renderOptionsWithLesson(q) {
   const letters = ["A", "B", "C", "D"];
+  // Create plausible options based on the lesson
+  const correct = q.lesson || "Learn about Islam";
+  const wrongs = ["Play video games", "Watch TV", "Eat candy", "Sleep all day", "Ignore parents", "Be mean to others"];
+  const shuffled = shuffle([correct, ...wrongs.slice(0,3)]);
+  
   let html = '<div class="options two-col" id="opts">';
-  options.forEach((opt, i) => {
+  shuffled.forEach((opt, i) => {
     html += `
-      <button class="opt-btn" onclick="selectSimpleOption(${i}, '${opt}', this, ${JSON.stringify(q).replace(/"/g, '&quot;')})">
+      <button class="opt-btn" onclick="selectOption(${i}, '${opt}', this, '${correct}')">
         <div class="opt-letter">${letters[i]}</div>
         <div>${opt}</div>
       </button>
@@ -940,41 +919,41 @@ function renderOptionsSimple(options, q) {
   return html;
 }
 
-function selectSimpleOption(idx, opt, btn, q) {
+// FIXED: Global function for option selection
+window.selectOption = function(idx, opt, btn, correct) {
   if(answered) return;
   answered = true;
   
-  // For now, consider any option as correct if it's the first one
-  // In a real app, you'd have proper correct answers
-  const isCorrect = idx === 0;
+  const isCorrect = opt === correct;
   
   if(isCorrect) { 
     correct++; 
   } else { 
     wrong++; 
-    mistakes.push({q: q.title || q.name || "Question", exp: q.lesson || q.meaning || "Keep learning!"});
+    mistakes.push({q: questions[qi].title || questions[qi].name || "Question", exp: "Correct answer: " + correct});
   }
   
   document.querySelectorAll('.opt-btn').forEach(b => {
     b.disabled = true;
+    if(b.innerHTML.includes(correct)) {
+      b.classList.add('correct');
+    }
   });
   
   if(isCorrect) {
     btn.classList.add('correct');
   } else {
     btn.classList.add('wrong');
-    document.querySelector('.opt-btn').classList.add('correct');
   }
   
-  showFeedback(isCorrect, isCorrect ? "Excellent! 🌟" : "Try again next time! Keep learning! 💪");
-}
+  showFeedback(isCorrect, isCorrect ? "MashaAllah! Excellent! 🌟" : "Try again next time! Keep learning! 💪");
+};
 
-function markLearned(q) {
-  if(answered) return;
-  answered = true;
-  correct++;
-  
-  showFeedback(true, "MashaAllah! You learned something new today! 🌟");
+function speakWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = 'ar-SA';
+  utterance.rate = 0.8;
+  window.speechSynthesis.speak(utterance);
 }
 
 function playAudio() {
@@ -992,9 +971,18 @@ function playAudio() {
   }
 }
 
+function markLearned(q) {
+  if(answered) return;
+  answered = true;
+  correct++;
+  
+  showFeedback(true, "MashaAllah! You learned something new today! 🌟");
+}
+
 function checkAnswer() {
   // For categories without multiple choice, this is handled by markLearned
-  if(!answered) {
+  // For others, the global selectOption handles it
+  if(!answered && (cat === 'quran' || cat === 'dua')) {
     markLearned(questions[qi]);
   }
 }
@@ -1039,27 +1027,25 @@ function nextQuestion() {
 function showResult() {
   const total = questions.length;
   const pct = Math.round((correct/total)*100);
-  const passed = pct >= PASS_PCT;
-  const stars = Math.min(3, Math.floor(correct / 2) + 1); // 1-3 stars based on performance
+  const passed = correct > 0; // Pass if they learned at least one thing
+  const stars = Math.min(3, correct); // 1-3 stars based on how many they got right
   
   if(passed) {
     progress[cat][level].done = true;
     progress[cat][level].stars = Math.max(progress[cat][level].stars || 0, stars);
-    // Unlock next level
-    if(level < CATS[cat].levels) progress[cat][level+1].unlocked = true;
   }
   
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify({v:1, progress})); } catch {}
   updateSaveLbl();
   
-  const emojis = passed ? (stars === 3 ? "🏆" : "🌟") : "💪";
+  const emojis = stars === 3 ? "🏆" : stars === 2 ? "🌟" : "⭐";
   document.getElementById("resEmoji").textContent = emojis;
   document.getElementById("resTitle").textContent = passed ? "MashaAllah! Great Job!" : "Keep Going!";
   document.getElementById("resPct").textContent = stars + " Stars";
   document.getElementById("resStars").innerHTML = "⭐".repeat(stars);
   document.getElementById("resMsg").innerHTML = passed
     ? "You earned " + stars + " stars! " + (level < CATS[cat].levels ? "You unlocked the next level! 🚀" : "You've completed all levels! 🎉")
-    : "You got " + correct + " out of " + total + " correct. Try again to earn more stars! 💪";
+    : "Try again to earn more stars! 💪";
   
   const ms = document.getElementById("mistakeSection");
   if(mistakes.length > 0) {
@@ -1069,7 +1055,7 @@ function showResult() {
   
   document.getElementById("retryBtn").onclick = function() { startLevel(level); };
   const nb = document.getElementById("nextLvBtn");
-  if(passed && level < CATS[cat].levels) {
+  if(level < CATS[cat].levels) {
     nb.style.display = "inline-flex";
     nb.onclick = function() { startLevel(level + 1); };
   } else nb.style.display = "none";
